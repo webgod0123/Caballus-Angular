@@ -1,0 +1,47 @@
+<caballus-page-header
+    *ngIf="role$ | async as existingRole"
+    [title]="!!existingRole ? 'Edit Role' : 'Create Role'"
+>
+    <button mat-button (click)="goBack()"><fa-icon icon="reply"></fa-icon> Back to Roles</button>
+    <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="(!!existingRole && !existingRole.settings.canEdit) ||
+            (submitting$ | async)"
+        (click)="onSubmit()"
+    >
+        <mat-spinner
+            class="inline-spinner"
+            [diameter]="17"
+            *ngIf="(submitting$ | async)"
+        ></mat-spinner>
+        Submit <fa-icon icon="arrow-right"></fa-icon>
+    </button>
+</caballus-page-header>
+<div class="page-container" *ngIf="formReady$ | async">
+    <form class="caballus-form" [formGroup]="form" #formElement>
+        <mat-card>
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput required placeholder="Name" formControlName="name" />
+                <mat-error [rfxError]="form.get('name')"></mat-error>
+            </mat-form-field>
+
+            <mat-card class="form-group select-permissions">
+                <mat-card-title class="form-group-header">
+                    Select Permissions
+                </mat-card-title>
+                <ng-container formGroupName="permissions">
+                    <ul>
+                        <li *ngFor="let m of Permission.members">
+                            <mat-checkbox [formControlName]="m">
+                                {{ Permission.toString(m) }}
+                            </mat-checkbox>
+                        </li>
+                    </ul>
+                </ng-container>
+            </mat-card>
+        </mat-card>
+    </form>
+</div>

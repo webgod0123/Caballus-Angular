@@ -1,0 +1,30 @@
+// NOT MOBILE FRIENDS
+form {
+    // Full height - height of footer
+    height: calc(100% - 37px);
+
+    caballus-page-header > button {
+        margin-left: 16px;
+
+        .mat-spinner {
+            display: inline-block;
+        }
+    }
+
+    .page-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        max-height: 100%;
+        align-content: flex-start;
+
+        .form-group {
+            width: 392px;
+            margin: 16px 0 0 16px;
+
+            mat-form-field {
+                display: block;
+            }
+        }
+    }
+}

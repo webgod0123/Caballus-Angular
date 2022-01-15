@@ -1,0 +1,16 @@
+<caballus-banner *ngIf="(impersonating$ | async)" (click)="stopImpersonation()">
+    You are impersonating {{ user.profile.firstName }} {{ user.profile.lastName }}. Click to stop
+    impersonation.
+</caballus-banner>
+<div class="header-content">
+    <img class="logo" src="/assets/logo.svg" height="40px;" />
+    <label class="system-name"><em>Fueled by caballus</em></label>
+    <fa-icon class="notification" [icon]="['far', 'bell']"></fa-icon>
+    <label class="who-am-i">
+        <span> {{ user.profile.firstName }} {{ user.profile.lastName }} </span> |
+    </label>
+    <div class="logout" (click)="logout.emit()">
+        Log Out
+        <fa-icon [icon]="['far', 'sign-out']"></fa-icon>
+    </div>
+</div>

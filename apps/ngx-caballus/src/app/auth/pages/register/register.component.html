@@ -1,0 +1,99 @@
+<div class="register-container">
+    <mat-card>
+        <mat-card-content>
+            <img class="logo" src="/assets/logo.svg" />
+            <h4 class="logo-title">Starter Project</h4>
+            <h2>New Registration</h2>
+            <!-- <mat-horizontal-stepper linear #stepper> -->
+                <!-- <mat-step></mat-step> -->
+                <!-- <mat-step [stepControl]="form"> -->
+                    <form
+                        *ngIf="formReady$ | async"
+                        [formGroup]="form"
+                        (ngSubmit)="registerUser(form)"
+                    >
+                        <ng-template matStepLabel>Fill out user information</ng-template>
+                        <div class="two-fields">
+                            <mat-form-field>
+                                <input
+                                    matInput
+                                    placeholder="First Name"
+                                    type="text"
+                                    formControlName="firstName"
+                                />
+                                <mat-error [rfxError]="form.get('firstName')"></mat-error>
+                            </mat-form-field>
+                            <mat-form-field>
+                                <input
+                                    matInput
+                                    placeholder="Last Name"
+                                    type="text"
+                                    formControlName="lastName"
+                                />
+                                <mat-error [rfxError]="form.get('lastName')"></mat-error>
+                            </mat-form-field>
+                        </div>
+                        <mat-form-field>
+                            <input
+                                matInput
+                                placeholder="Email Address"
+                                type="text"
+                                formControlName="email"
+                            />
+                            <mat-error [rfxError]="form.get('email')"></mat-error>
+                        </mat-form-field>
+                        <div class="two-fields">
+                            <mat-form-field>
+                                <input
+                                    matInput
+                                    placeholder="Password"
+                                    type="password"
+                                    formControlName="password"
+                                />
+                                <mat-error [rfxError]="form.get('password')"></mat-error>
+                            </mat-form-field>
+                            <mat-form-field *ngIf="!!form.get('confirmPassword')">
+                                <input
+                                    matInput
+                                    placeholder="Confirm Password"
+                                    type="password"
+                                    formControlName="confirmPassword"
+                                />
+                                <mat-error
+                                    [rfxError]="form.get('confirmPassword')"
+                                ></mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="terms" *ngIf="(acceptedTerms$ | async)">
+                            Terms and conditions have been accepted.&nbsp;
+                            <span class="link" (click)="openTermsAndConditionsModal()">
+                                View Terms and Conditions.
+                            </span>
+                        </div>
+                        <div class="buttons">
+                            <button
+                                mat-flat-button
+                                color="primary"
+                                type="button"
+                                (click)="openTermsAndConditionsModal()"
+                                *ngIf="!(acceptedTerms$ | async)"
+                            >
+                                Review Terms & Conditions
+                            </button>
+                            <button
+                                mat-flat-button
+                                color="primary"
+                                *ngIf="(acceptedTerms$ | async)"
+                            >
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                <!-- </mat-step>
+            </mat-horizontal-stepper> -->
+        </mat-card-content>
+    </mat-card>
+</div>
+<div class="loading" *ngIf="(loading$ | async)">
+    <mat-spinner></mat-spinner>
+</div>

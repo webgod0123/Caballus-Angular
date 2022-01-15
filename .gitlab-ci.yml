@@ -1,0 +1,110 @@
+include:
+  - project: riafox/rfx/devops
+    file: gitlab-ci-templates/rfx-init.yml
+  - project: riafox/rfx/devops
+    file: gitlab-ci-templates/rfx-build.yml
+  - project: riafox/rfx/devops
+    file: gitlab-ci-templates/rfx-dependencies.yml
+
+variables:
+  PROJECT: caballus
+
+dependencies:
+  extends: .dependencies_rfx
+  only:
+    refs:
+      - uat
+      - master
+
+dependencies-qa:
+  extends: .dependencies_rfx
+  only:
+    refs:
+      - qa
+  variables:
+    PROJECT: caballus-qa
+
+# build:ion-devote:
+#   extends: .build_rfx
+#   variables:
+#     SUBPROJECT: ion-caballus
+#   only:
+#     refs:
+#       - uat
+#       - master
+#     changes:
+#       - package.json
+#       - libs/common/**/*
+#       - libs/ui-common/**/*
+#       - libs/ui-library/**/*
+#       - apps/ion-decaf/**/*
+
+# build:ion-devote-qa:
+#   extends: .build_rfx
+#   variables:
+#     SUBPROJECT: ion-caballus
+#   only:
+#     refs:
+#       - qa
+#     changes:
+#       - package.json
+#       - libs/common/**/*
+#       - libs/ui-common/**/*
+#       - libs/ui-library/**/*
+#       - apps/ion-decaf/**/*
+
+build:ngx-caballus:
+  extends: .build_rfx
+  variables:
+    SUBPROJECT: ngx-caballus
+  only:
+    refs:
+      - uat
+      - master
+    changes:
+      - package.json
+      - libs/common/**/*
+      - libs/ui-common/**/*
+      - libs/ui-common/**/*
+      - apps/ngx-caballus/**/*
+
+build:ngx-caballus-qa:
+  extends: .build_rfx
+  variables:
+    SUBPROJECT: ngx-caballus-qa
+  only:
+    refs:
+      - qa
+    changes:
+      - package.json
+      - libs/common/**/*
+      - libs/ui-common/**/*
+      - libs/ui-common/**/*
+      - apps/ngx-caballus/**/*
+
+build:nst-caballus:
+  extends: .build_rfx
+  variables:
+    SUBPROJECT: nst-caballus
+  only:
+    refs:
+      - uat
+      - master
+    changes:
+      - package.json
+      - libs/common/**/*
+      - libs/api-common/**/*
+      - apps/nst-caballus/**/*
+
+build:nst-caballus-qa:
+  extends: .build_rfx
+  variables:
+    SUBPROJECT: nst-caballus-qa
+  only:
+    refs:
+      - qa
+    changes:
+      - package.json
+      - libs/common/**/*
+      - libs/api-common/**/*
+      - apps/nst-caballus/**/*

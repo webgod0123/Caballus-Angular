@@ -1,0 +1,95 @@
+:host {
+    .header-content {
+        display: grid;
+        grid-template:
+            'logo name . notification user'
+            'logo name . notification logout'
+            / auto auto 1fr auto auto;
+        grid-gap: 12px;
+        place-items: center;
+        border-bottom: 0.55px solid var(caballus-color-primary);
+        box-shadow: 0 0 10px 4px rgba(var(caballus-color-primary-rgb), 0.12);
+        z-index: 10;
+
+        @media (max-width: 767px) {
+            grid-template: 'user notification logout'/ 3fr auto 2fr;
+        }
+
+        .logo {
+            grid-area: logo;
+            padding: 0 0 0 40px;
+
+            @media (max-width: 767px) {
+                display: none;
+            }
+        }
+
+        .system-name {
+            grid-area: name;
+            color: var(caballus-color-text);
+
+            @media (max-width: 767px) {
+                display: none;
+            }
+        }
+
+        .notification {
+            grid-area: notification;
+            font-size: 24px;
+            padding: 0 12px;
+            transition: all 0.2s var(--transition-animation);
+            color: var(caballus-color-text);
+            cursor: pointer;
+
+            &:hover {
+                color: var(caballus-color-primary);
+            }
+        }
+
+        .who-am-i {
+            grid-area: user;
+            padding: 20px 40px 0 20px;
+            font-size: 20px;
+
+            span {
+                cursor: pointer;
+                color: var(caballus-color-text);
+
+                &:hover {
+                    color: var(caballus-color-primary);
+                }
+            }
+
+            @media (max-width: 767px) {
+                padding: 0px 20px 0 20px;
+                font-size: 18px;
+            }
+        }
+
+        .logout {
+            grid-area: logout;
+            padding: 0 40px 12px 20px;
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            transition: all 0.2s var(--transition-animation);
+            color: var(caballus-color-text);
+            cursor: pointer;
+            text-decoration: none;
+
+            &:hover {
+                color: var(caballus-color-warn);
+            }
+
+            fa-icon {
+                font-size: 16px;
+                padding-left: 6px;
+            }
+
+            @media (max-width: 767px) {
+                padding: 20px 12px 20px;
+                font-size: 18px;
+            }
+        }
+    }
+}

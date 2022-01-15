@@ -1,0 +1,43 @@
+{
+    "npmScope": "caballus",
+    "implicitDependencies": {
+        "angular.json": "*",
+        "package.json": "*",
+        "tsconfig.json": "*",
+        "tslint.json": "*",
+        "nx.json": "*"
+    },
+    "projects": {
+        "ngx-caballus": {
+            "tags": ["angular"]
+        },
+        "ngx-caballus-e2e": {
+            "tags": []
+        },
+        "nst-caballus": {
+            "tags": ["nest"]
+        },
+        "common": {
+            "tags": ["iso"]
+        },
+        "api-common": {
+            "tags": ["api", "library"]
+        },
+        "ui-common": {
+            "tags": ["ui", "library"]
+        },
+        "ui-library": {
+            "tags": ["ui", "library"]
+        },
+        "ui-state": {
+            "tags": ["ui", "library"]
+        },
+        "ion-caballus": {
+            "tags": []
+        },
+        "ion-caballus-e2e": {
+            "tags": [],
+            "implicitDependencies": ["ion-caballus"]
+        }
+    }
+}

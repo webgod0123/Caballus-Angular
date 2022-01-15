@@ -1,0 +1,100 @@
+<rfx-grid #rfxGrid [dataSource]="gridSource">
+    <rfx-grid-header>
+        <caballus-page-header title="Manage Users">
+            <a mat-raised-button color="primary" routerLink="/support/user/create">
+                Create User
+            </a>
+        </caballus-page-header>
+    </rfx-grid-header>
+    <rfx-grid-action-bar>
+        <rfx-grid-action-bar-tag-control></rfx-grid-action-bar-tag-control>
+        <rfx-grid-action-bar-delete-control
+            (delete)="deleteItems($event)"
+        ></rfx-grid-action-bar-delete-control>
+    </rfx-grid-action-bar>
+    <rfx-grid-filter>
+        <rfx-grid-filter-search-control
+            name="searchTerm"
+            placeholder="Search"
+        ></rfx-grid-filter-search-control>
+        <rfx-grid-filter-clear-button
+            rfxGridCustomControl
+            [rfxGrid]="rfxGrid"
+        ></rfx-grid-filter-clear-button>
+    </rfx-grid-filter>
+    <rfx-grid-list>
+        <rfx-grid-list-item
+            *rfxGridListItemDef="let item"
+            (click)="gridSource.openDetailView(item)"
+            (dblclick)="openItem(item)"
+        >
+            {{ item.profile.firstName }} {{ item.profile.lastName }}
+        </rfx-grid-list-item>
+    </rfx-grid-list>
+    <rfx-grid-paginator></rfx-grid-paginator>
+    <rfx-grid-detail-view *rfxGridDetailViewDef="let view">
+        <div rfxGridDetailViewHeader>
+            <button
+                class="detail-view__button"
+                mat-raised-button
+                color="primary"
+                [disabled]="!view.hasPrevious()"
+                (click)="view.previous()"
+            >
+                Previous
+            </button>
+            <button
+                class="detail-view__button"
+                mat-raised-button
+                color="primary"
+                [disabled]="!view.hasNext()"
+                (click)="view.next()"
+            >
+                Next
+            </button>
+        </div>
+        <div rfxGridDetailViewContent>
+            <h2 class="detail-view__title">User Details</h2>
+            <div class="detail-view__group">
+                <label>Name:</label>
+                <span>{{ view.item.profile.firstName }} {{ view.item.profile.lastName }}</span>
+            </div>
+            <div class="detail-view__group">
+                <label>Tags:</label>
+                <span>None</span>
+            </div>
+            <div class="detail-view__group">
+                <label>Created Date:</label>
+                <span>{{ view.item.createdDate | date: 'short' }}</span>
+            </div>
+            <div class="detail-view__group">
+                <label>Last Modified:</label>
+                <span>{{ view.item.modifiedDate | date: 'short' }}</span>
+            </div>
+        </div>
+        <div rfxGridDetailViewFooter>
+            <button
+                class="detail-view__button"
+                mat-raised-button
+                color="warn"
+                (click)="deleteItem(view.item)"
+            >
+                Delete User
+            </button>
+            <a class="operationBlank button-container"
+                matTooltip="Impersonate">
+                <fa-icon
+                    [icon]="['far', 'user']"
+                    (click)="impersonate(view.item._id, $event)"
+                ></fa-icon>
+         </a>
+            <a
+                class="detail-view__button"
+                mat-raised-button
+                color="primary"
+                routerLink="/support/user/edit/{{ view.item._id }}"
+                >Edit User</a
+            >
+        </div>
+    </rfx-grid-detail-view>
+</rfx-grid>

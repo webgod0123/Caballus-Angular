@@ -1,0 +1,75 @@
+<ng-container *ngIf="(state$ | async) as state">
+    <div class="toggle item" (click)="toggleOpen(!state.opened)">
+        <fa-icon
+            class="toggle-icon"
+            [class.opened]="opened$ | async"
+            [icon]="['far', arrowIcon$ | async]"
+            matTooltip="Expand the navigation"
+            [matTooltipDisabled]="state.opened"
+            [matTooltipShowDelay]="state.tooltipDelay"
+            [matTooltipHideDelay]="state.tooltipDelay"
+        ></fa-icon>
+        <label>Collapse</label>
+        <fa-icon
+            class="pin-icon"
+            [icon]="['far', 'thumbtack']"
+            [class.pinned]="pinned$ | async"
+            (click)="pin(!state.pinned, $event)"
+            matTooltip="Pin the navigation open"
+            [matTooltipShowDelay]="state.tooltipDelay"
+            [matTooltipHideDelay]="state.tooltipDelay"
+        ></fa-icon>
+    </div>
+    <hr />
+    <mat-nav-list class="nav-list">
+        <ng-container *ngFor="let menuItem of (menuItems$ | async)">
+            <a
+                class="nav-item"
+                mat-list-item
+                [routerLink]="menuItem.route"
+                [routerLinkActive]="!!menuItem.route ? 'active' : ''"
+                [class.active]="menuItem.active"
+                [class.expanded]="state.opened && (expandedItem$ | async) === menuItem"
+                (click)="
+                    !!menuItem.route
+                        ? toggleOpen(state.pinned ? state.opened : false)
+                        : menuItem.children.length > 0
+                        ? expandItem(state.opened, state.expandedItem, menuItem)
+                        : null
+                "
+                [matTooltip]="menuItem.label"
+                matTooltipPosition="right"
+                [matTooltipShowDelay]="state.tooltipDelay"
+                [matTooltipHideDelay]="state.tooltipDelay"
+                [matTooltipDisabled]="state.opened"
+            >
+                <span class="active-indicator"></span>
+                <fa-icon [icon]="menuItem.icon"></fa-icon>
+                <label>
+                    {{ menuItem.label }}
+                </label>
+                <fa-icon
+                    class="expandable-indicator"
+                    *ngIf="menuItem.children.length > 0"
+                    [icon]="['far', 'chevron-left']"
+                ></fa-icon>
+            </a>
+            <mat-nav-list
+                *ngIf="menuItem.children.length > 0"
+                class="sub-item-list total-items-{{ menuItem.children.length }}"
+                [class.expanded]="state.opened && (expandedItem$ | async) === menuItem"
+            >
+                <a
+                    class="nav-item sub-nav-item"
+                    mat-list-item
+                    *ngFor="let childItem of menuItem.children"
+                    [routerLink]="childItem.route"
+                    [routerLinkActive]="!!childItem.route ? 'active' : ''"
+                    (click)="toggleOpen(state.pinned ? state.opened : false)"
+                >
+                    <label>{{ childItem.label }}</label>
+                </a>
+            </mat-nav-list>
+        </ng-container>
+    </mat-nav-list>
+</ng-container>

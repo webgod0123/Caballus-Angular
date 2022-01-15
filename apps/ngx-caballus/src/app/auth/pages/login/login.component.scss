@@ -1,0 +1,86 @@
+:host {
+    .login-container {
+        width: calc(100% - 40px);
+        max-width: 900px;
+        padding: 7% 0 0;
+        margin: 0 auto;
+
+        mat-card {
+            background: #f7f7f7;
+
+            mat-card-content {
+                display: flex;
+
+                .left-panel {
+                    width: 42%;
+                    text-align: center;
+                    padding: 20px 40px 20px 20px;
+                    border-right: 1px solid #c7c7c7;
+
+                    .logo {
+                        width: 100%;
+                        margin: auto;
+                        max-width: 225px;
+                    }
+                    .logo-title {
+                        color: #7a7a7a;
+                        margin: 0 0 50px;
+                        font-size: 18px;
+                        font-weight: 400;
+                        font-style: italic;
+                    }
+                    .logout-message {
+                        color: var(--caballus-color-primary);
+                        margin-top: 0;
+                    }
+                    form {
+                        display: flex;
+                        flex-direction: column;
+
+                        mat-form-field {
+                            margin-bottom: 10px;
+                        }
+                        .login-help {
+                            margin-top: 10px;
+                            display: flex;
+                            justify-content: space-between;
+
+                            a {
+                                color: #7a7a7a;
+                            }
+                        }
+                    }
+                }
+                .right-panel {
+                    width: 58%;
+                    padding: 20px 20px 20px 40px;
+
+                    .mat-card-image {
+                        width: 100%;
+                        margin: 0 0 10px;
+                    }
+                    .service-partner {
+                        display: flex;
+                        align-items: center;
+
+                        button {
+                            min-width: 120px;
+                            margin-left: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .loading {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: rgba(0, 0, 0, 0.12);
+    }
+}

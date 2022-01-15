@@ -1,0 +1,38 @@
+:host {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    mat-sidenav-container {
+        flex: 1;
+
+        &:not(.mat-drawer-opened) mat-sidenav {
+            transform: none;
+        }
+    }
+
+    mat-sidenav {
+        transform: none !important;
+        visibility: visible !important; // override hidden state on "closed"
+    }
+
+    mat-sidenav-content {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        // These margin transitions must match the secured-sidebar margins...sadly
+        margin-left: 50px;
+        transition: margin 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+        &.expanded {
+            margin-left: 240px !important;
+        }
+    }
+
+    main {
+        flex: 1;
+        overflow-y: auto;
+        background-color: #eee;
+    }
+}

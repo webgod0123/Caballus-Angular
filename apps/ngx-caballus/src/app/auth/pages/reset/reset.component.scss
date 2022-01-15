@@ -1,0 +1,47 @@
+:host {
+    .reset-container {
+        width: calc(100% - 40px);
+        max-width: 500px;
+        padding: 7% 0 0;
+        margin: 0 auto;
+
+        mat-card {
+            background: #f7f7f7;
+
+            mat-card-content {
+                text-align: center;
+                padding: 20px 40px 20px 20px;
+
+                .logo {
+                    width: 100%;
+                    margin: auto;
+                    max-width: 225px;
+                }
+                .logo-title {
+                    color: #7a7a7a;
+                    margin: 0 0 10px 0;
+                    font-size: 18px;
+                    font-weight: 400;
+                    font-style: italic;
+                }
+                form {
+                    display: flex;
+                    flex-direction: column;
+
+                    mat-form-field {
+                        margin-bottom: 10px;
+                    }
+                    .buttons {
+                        display: flex;
+                        flex-direction: row-reverse;
+                        justify-content: space-between;
+
+                        button {
+                            width: calc(50% - 10px);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

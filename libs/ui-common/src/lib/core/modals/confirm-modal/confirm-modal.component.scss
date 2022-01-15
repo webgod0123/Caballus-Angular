@@ -1,0 +1,10 @@
+:host {
+    display: block;
+    min-width: 300px;
+    max-width: 500px;
+
+    h2 {
+        color: var(--caballus-color-warn);
+        margin-bottom: 0px;
+    }
+}

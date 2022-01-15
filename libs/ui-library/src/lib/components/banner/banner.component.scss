@@ -1,0 +1,12 @@
+:host {
+    display: block;
+
+    div {
+        background: var(--caballus-color-red);
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        width: 100%;
+        cursor: pointer;
+    }
+}

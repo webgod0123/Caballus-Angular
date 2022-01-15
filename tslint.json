@@ -1,0 +1,214 @@
+{
+    "rulesDirectory": [
+        "node_modules/codelyzer",
+        "tools/lint-rules",
+        "node_modules/@nrwl/workspace/src/tslint"
+    ],
+    "extends": ["tslint-eslint-rules"],
+    "linterOptions": {
+        "exclude": [
+            "**/e2e/**",
+            "**/apps/**/*-e2e/**",
+            "**/*.spec.ts",
+            "**/lint-rules/**",
+            "**/node_modules/**"
+        ]
+    },
+    "rules": {
+        "arrow-return-shorthand": true,
+        "ban": [true, ["alert"]],
+        "block-spacing": [true, "always"],
+        "brace-style": [true, "1tbs"],
+        "callable-types": true,
+        "class-name": true,
+        "comment-format": [true, "check-space"],
+        "curly": true,
+        "deprecation": {
+            "severity": "warn"
+        },
+        "eofline": true,
+        "forin": false,
+        "import-spacing": true,
+        "indent": [true, "spaces"],
+        "label-position": true,
+        "max-line-length": [true, 160],
+        "rfx-member-access": [
+            true,
+            "check-accessor",
+            "check-parameter-property",
+            "ignore-angular-lifecycle"
+        ],
+        "member-ordering": [
+            true,
+            {
+                "order": ["static-field", "instance-field", "static-method", "instance-method"]
+            }
+        ],
+        "new-parens": true,
+        "no-arg": true,
+        "no-bitwise": true,
+        "no-conditional-assignment": true,
+        "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
+        "no-constant-condition": [
+            true,
+            {
+                "checkLoops": false
+            }
+        ],
+        "no-construct": true,
+        "no-control-regex": true,
+        "no-consecutive-blank-lines": [true, 2],
+        "no-debugger": true,
+        "no-duplicate-super": true,
+        "no-duplicate-switch-case": true,
+        "no-duplicate-variable": [true, "check-parameters"],
+        "no-empty": false,
+        "no-empty-character-class": true,
+        "no-empty-interface": false,
+        "no-eval": true,
+        "no-ex-assign": true,
+        "no-extra-semi": true,
+        "no-inferrable-types": [false, "ignore-params"],
+        "no-inner-declarations": true,
+        "no-invalid-regexp": true,
+        "no-irregular-whitespace": true,
+        "no-magic-numbers": true,
+        "no-misused-new": true,
+        "no-multi-spaces": true,
+        "no-non-null-assertion": true,
+        "no-regex-spaces": true,
+        "no-shadowed-variable": true,
+        "no-string-literal": false,
+        "no-string-throw": true,
+        "no-switch-case-fall-through": true,
+        "no-trailing-whitespace": true,
+        "no-unnecessary-initializer": true,
+        "no-unsafe-finally": true,
+        "no-unused-expression": true,
+        "no-use-before-declare": true,
+        "no-var-keyword": true,
+        "object-literal-sort-keys": false,
+        "one-line": [true, "check-open-brace", "check-whitespace"],
+        "prefer-const": true,
+        "prefer-object-spread": true,
+        "quotemark": [true, "single", "avoid-escape"],
+        "radix": true,
+        "semicolon": [true, "always", "ignore-bound-class-methods"],
+        "switch-default": true,
+        "ter-arrow-body-style": [true, "as-needed"],
+        "ter-arrow-parens": [true, "as-needed"],
+        "ter-arrow-spacing": [
+            true,
+            {
+                "before": true,
+                "after": true
+            }
+        ],
+        "ter-func-call-spacing": true,
+        "ter-indent": [
+            true,
+            4,
+            {
+                "SwitchCase": 1,
+                "VariableDeclarator": {
+                    "var": 1,
+                    "let": 1,
+                    "const": 1.5
+                },
+                "MemberExpression": 1,
+                "FunctionDeclaration": {
+                    "body": 1,
+                    "parameters": "first"
+                },
+                "FunctionExpression": {
+                    "body": 1,
+                    "parameters": "first"
+                },
+                "CallExpression": {
+                    "arguments": "first"
+                }
+            }
+        ],
+        "ter-max-len": [
+            true,
+            {
+                "code": 160,
+                "tabWidth": 4,
+                "ignoreImports": false,
+                "ignoreUrls": true
+            }
+        ],
+        "ter-no-proto": true,
+        "ter-no-script-url": true,
+        "ter-no-sparse-arrays": true,
+        "ter-prefer-arrow-callback": true,
+        "trailing-comma": false,
+        "triple-equals": [true, "allow-null-check", "allow-undefined-check"],
+        "typedef": [
+            true,
+            "call-signature",
+            "arrow-call-signature",
+            "property-declaration",
+            "member-variable-declaration",
+            "object-destructuring",
+            "array-destructuring"
+        ],
+        "typedef-whitespace": [
+            true,
+            {
+                "call-signature": "nospace",
+                "index-signature": "nospace",
+                "parameter": "nospace",
+                "property-declaration": "nospace",
+                "variable-declaration": "nospace"
+            }
+        ],
+        "unified-signatures": true,
+        "use-isnan": true,
+        "valid-typeof": true,
+        "variable-name": [
+            true,
+            "ban-keywords",
+            "check-format",
+            "allow-pascal-case",
+            "allow-leading-underscore"
+        ],
+        "whitespace": [
+            true,
+            "check-branch",
+            "check-decl",
+            "check-operator",
+            "check-module",
+            "check-separator",
+            "check-rest-spread",
+            "check-type",
+            "check-typecast",
+            "check-type-operator",
+            "check-pre-block"
+        ],
+        "nx-enforce-module-boundaries": [
+            true,
+            {
+                "allow": [],
+                "depConstraints": [
+                    {
+                        "sourceTag": "library",
+                        "onlyDependOnLibsWithTags": ["iso", "library"]
+                    },
+                    {
+                        "sourceTag": "nest",
+                        "onlyDependOnLibsWithTags": ["api"]
+                    },
+                    {
+                        "sourceTag": "ionic",
+                        "onlyDependOnLibsWithTags": ["ui"]
+                    },
+                    {
+                        "sourceTag": "angular",
+                        "onlyDependOnLibsWithTags": ["ui"]
+                    }
+                ]
+            }
+        ]
+    }
+}

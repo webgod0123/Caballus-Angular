@@ -1,0 +1,66 @@
+<form class="caballus-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <caballus-page-header [title]="(user$ | async) ? 'Edit User' : 'Create User'">
+        <button mat-button (click)="goBack()">
+            <fa-icon icon="reply"></fa-icon> Back to Users
+        </button>
+        <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="submitting$ | async"
+        >
+            <mat-spinner
+                class="inline-spinner"
+                [diameter]="17"
+                *ngIf="submitting$ | async"
+            ></mat-spinner>
+            Submit <fa-icon icon="arrow-right"></fa-icon>
+        </button>
+    </caballus-page-header>
+    <div class="page-container">
+        <mat-card class="form-group">
+            <mat-card-title class="form-group-header">Personal</mat-card-title>
+            <mat-form-field>
+                <mat-label>Role</mat-label>
+                <mat-select multiple placeholder="Role" formControlName="roleIds">
+                    <mat-option *ngFor="let role of (roles$ | async)" [value]="role._id">
+                        {{ role.name }}
+                    </mat-option>
+                </mat-select>
+                <mat-error [rfxError]="form.get('roleIds')"></mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="First Name" formControlName="firstName" />
+                <mat-error [rfxError]="form.get('firstName')"></mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Last Name" formControlName="lastName" />
+                <mat-error [rfxError]="form.get('lastName')"></mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Timezone</mat-label>
+                <mat-select placeholder="Timezone" formControlName="timezone">
+                    <mat-option *ngFor="let timezone of timezones" [value]="timezone.key">
+                        {{ timezone.name }}
+                    </mat-option>
+                </mat-select>
+                <mat-error [rfxError]="form.get('timezone')"></mat-error>
+            </mat-form-field>
+        </mat-card>
+        <mat-card class="form-group">
+            <mat-card-title class="form-group-header">Contact</mat-card-title>
+            <mat-form-field>
+                <mat-label>Phone</mat-label>
+                <input matInput type="tel" placeholder="Phone" formControlName="phone" />
+                <mat-error [rfxError]="form.get('phone')"></mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput type="email" placeholder="Email" formControlName="email" />
+                <mat-error [rfxError]="form.get('email')"></mat-error>
+            </mat-form-field>
+        </mat-card>
+    </div>
+</form>

@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Session Expiring</h2>
+<div mat-dialog-content>
+    {{ message$ | async }}
+    <br/><br/>
+    Perform any action to continue.
+</div>
+<div class="buttons" mat-dialog-actions align="end">
+    <button type="button" mat-raised-button color="primary" (click)="close()">
+        Close
+    </button>
+</div>

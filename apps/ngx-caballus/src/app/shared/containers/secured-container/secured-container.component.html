@@ -1,0 +1,19 @@
+<caballus-secured-header
+    [user]="user$ | async"
+    (logout)="logout()"
+></caballus-secured-header>
+<mat-sidenav-container>
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'">
+        <caballus-secured-sidebar
+            [opened]="snav.opened"
+            (toggle)="sidebarToggle(snav, $event)"
+            [menuItems]="siteMenu$ | async"
+        ></caballus-secured-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content [class.expanded]="snav.opened && !mobileQuery.matches">
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+        <caballus-secured-footer></caballus-secured-footer>
+    </mat-sidenav-content>
+</mat-sidenav-container>

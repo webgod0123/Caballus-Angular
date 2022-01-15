@@ -1,0 +1,15 @@
+:host {
+    display: flex;
+    align-items: center;
+    border-bottom: 0.55px solid rgba(var(caballus-color-dark-rgb), 0.2);
+    padding: 12px 20px;
+    background-color: white;
+}
+
+h1 {
+    font-weight: 400;
+    flex: 1;
+    margin: 0;
+    font-size: 28px;
+    color: rgba(var(caballus-color-text-rgb), 0.9);
+}

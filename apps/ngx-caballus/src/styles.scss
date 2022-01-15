@@ -1,0 +1,36 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@caballus/ui-library/scss/index';
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Material+Icons'); // Required for material icons
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700');
+
+@font-face {
+    font-family: 'Gotham Medium';
+    src: url(assets/font/GothamMedium.ttf);
+}
+
+@font-face {
+    font-family: 'Gotham Book';
+    src: url(assets/font/GothamBook.ttf);
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.mat-grid-tile .mat-figure {
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+}
+
+body {
+    margin: 0;
+}
+
+* {
+    font-family: 'Gotham Book', 'Gotham', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Gotham Medium', 'Gotham', sans-serif;
+}

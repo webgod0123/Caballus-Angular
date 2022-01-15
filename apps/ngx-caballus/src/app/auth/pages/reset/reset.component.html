@@ -1,0 +1,24 @@
+<div class="reset-container">
+    <mat-card>
+        <mat-card-content>
+            <img class="logo" src="/assets/logo.svg" />
+            <h4 class="logo-title">Fueled by caballus</h4>
+            <form [formGroup]="resetPasswordForm" (ngSubmit)="resetPassword(resetPasswordForm)">
+                <p>Enter a new password to continue.</p>
+                <mat-form-field>
+                    <input
+                        matInput
+                        placeholder="Password"
+                        type="password"
+                        formControlName="password"
+                    />
+                    <mat-error [rfxError]="resetPasswordForm.get('password')"></mat-error>
+                </mat-form-field>
+                <div class="buttons">
+                    <button mat-flat-button color="primary" type="submit">Reset Password</button>
+                    <button mat-stroked-button color="link" routerLink="/auth/login">Cancel</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

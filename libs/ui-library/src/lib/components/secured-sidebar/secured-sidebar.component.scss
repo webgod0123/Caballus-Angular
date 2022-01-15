@@ -1,0 +1,197 @@
+$movement-transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+$fade-transition: 0.2s var(--transition-animation);
+$faded-white: rgba(255, 255, 255, 0.5);
+$solid-white: rgba(255, 255, 255, 1);
+
+
+:host {
+    display: flex;
+    flex-direction: column;
+    // These margin transitions must match the sidenav-container margins...sadly
+    transition: all $movement-transition;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    background-color: var(caballus-color-green);
+
+    background: linear-gradient(121deg,
+            rgba(141, 141, 141, 0.09) 0%,
+            rgba(141, 141, 141, 0.09) 83%,
+            rgba(51, 51, 51, 0.09) 83%,
+            rgba(51, 51, 51, 0.09) 100%),
+        linear-gradient(200deg,
+            rgba(73, 73, 73, 0.05) 0%,
+            rgba(73, 73, 73, 0.05) 53%,
+            rgba(145, 145, 145, 0.05) 53%,
+            rgba(145, 145, 145, 0.05) 100%),
+        linear-gradient(48deg,
+            rgba(107, 107, 107, 0.06) 0%,
+            rgba(107, 107, 107, 0.06) 99%,
+            rgba(179, 179, 179, 0.06) 99%,
+            rgba(179, 179, 179, 0.06) 100%),
+        linear-gradient(321deg,
+            rgba(100, 100, 100, 0.05) 0%,
+            rgba(100, 100, 100, 0.05) 26%,
+            rgba(253, 253, 253, 0.05) 26%,
+            rgba(253, 253, 253, 0.05) 100%),
+        linear-gradient(228deg,
+            rgba(202, 202, 202, 0.06) 0%,
+            rgba(202, 202, 202, 0.06) 47%,
+            rgba(89, 89, 89, 0.06) 47%,
+            rgba(89, 89, 89, 0.06) 100%),
+        linear-gradient(321deg,
+            rgba(159, 159, 159, 0.05) 0%,
+            rgba(159, 159, 159, 0.05) 1%,
+            rgba(17, 17, 17, 0.05) 1%,
+            rgba(17, 17, 17, 0.05) 100%),
+        linear-gradient(90deg, rgba(118, 94, 81), rgba(118, 94, 81));
+    z-index: 8;
+
+    &.open {
+        width: 240px;
+    }
+
+    &:not(.open) {
+        width: 50px;
+    }
+}
+
+hr {
+    border-color: $faded-white;
+    width: 100%;
+    margin: 0;
+}
+
+.toggle {
+    transition: color $fade-transition;
+    cursor: pointer;
+    padding: 6px 0;
+    white-space: nowrap;
+    overflow-x: hidden;
+    color: $faded-white;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+        color: $solid-white;
+    }
+
+    fa-icon.toggle-icon {
+        font-size: 24px;
+        min-width: 50px;
+        display: inline-block;
+        text-align: center;
+        transform-origin: center center;
+        transition: transform $fade-transition;
+        transform: rotateY(0deg);
+
+        &.opened {
+            transform: rotateY(-360deg);
+        }
+    }
+
+    label {
+        font-size: 18px;
+        cursor: pointer;
+        flex: 1;
+    }
+
+    fa-icon.pin-icon {
+        min-width: 50px;
+        display: inline-block;
+        text-align: center;
+        font-size: 16px;
+        transition: color $fade-transition;
+        color: $faded-white;
+
+        &.pinned {
+            color: $solid-white;
+        }
+    }
+}
+
+:host .nav-list {
+    ::ng-deep .mat-list-item-content {
+        padding: 0;
+    }
+}
+
+.nav-item {
+    font-size: 18px;
+    white-space: nowrap;
+    overflow-x: hidden;
+    color: $faded-white;
+    transition: all $fade-transition;
+    background: rgba(0, 0, 0, 0);
+    overflow-y: hidden;
+
+    &:hover {
+        color: $solid-white;
+    }
+
+    &.active {
+        color: $solid-white;
+
+        .active-indicator {
+            background: white;
+        }
+    }
+
+    &.expanded {
+        .active-indicator {
+            background: white;
+        }
+
+        .expandable-indicator {
+            transform: rotateZ(-90deg);
+        }
+    }
+
+    .active-indicator {
+        height: 100%;
+        display: inline-block;
+        min-width: 4px;
+        background: transparent;
+        transition: background $fade-transition;
+    }
+
+    label {
+        flex: 1;
+        cursor: pointer;
+    }
+
+    fa-icon {
+        min-width: 46px;
+        display: inline-block;
+        text-align: center;
+        font-size: 20px;
+
+        &.expandable-indicator {
+            font-size: 16px;
+            transition: transform $fade-transition;
+            transform: rotateZ(0deg);
+        }
+    }
+}
+
+.sub-item-list {
+    height: 0px;
+    overflow: hidden;
+    transition: height $movement-transition;
+    display: block;
+    border-left: 4px solid white;
+
+    &.expanded {
+        @for $i from 1 through 20 {
+            &.total-items-#{$i} {
+                height: calc(48px * #{$i});
+            }
+        }
+    }
+
+    .sub-nav-item {
+        label {
+            padding-left: 60px;
+        }
+    }
+}

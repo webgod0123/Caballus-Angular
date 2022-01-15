@@ -1,0 +1,18 @@
+:host {
+    display: block;
+    max-width: 500px;
+    min-width: 300px;
+
+    h2 {
+        color: var(--caballus-color-warn);
+        margin-bottom: 0px;
+    }
+
+    .buttons {
+        margin-top: 12px;
+
+        button {
+            min-width: 120px;
+        }
+    }
+}

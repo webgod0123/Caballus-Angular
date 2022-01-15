@@ -1,0 +1,686 @@
+{
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "newProjectRoot": "",
+    "projects": {
+        "ngx-caballus": {
+            "projectType": "application",
+            "schematics": {
+                "@nrwl/workspace:component": {
+                    "style": "scss"
+                }
+            },
+            "root": "apps/ngx-caballus",
+            "sourceRoot": "apps/ngx-caballus/src",
+            "prefix": "caballus",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/apps/ngx-caballus",
+                        "index": "apps/ngx-caballus/src/index.html",
+                        "main": "apps/ngx-caballus/src/main.ts",
+                        "polyfills": "apps/ngx-caballus/src/polyfills.ts",
+                        "tsConfig": "apps/ngx-caballus/tsconfig.app.json",
+                        "assets": [
+                            "apps/ngx-caballus/src/favicon.ico",
+                            "apps/ngx-caballus/src/assets"
+                        ],
+                        "styles": [
+                            "apps/ngx-caballus/src/styles.scss",
+                            "node_modules/ngx-toastr/toastr.css"
+                        ],
+                        "scripts": []
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "apps/ngx-caballus/src/environments/environment.ts",
+                                    "with": "apps/ngx-caballus/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                }
+                            ]
+                        },
+                        "uat": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "apps/ngx-caballus/src/environments/environment.ts",
+                                    "with": "apps/ngx-caballus/src/environments/environment.uat.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                }
+                            ]
+                        },
+                        "qa": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "apps/ngx-caballus/src/environments/environment.ts",
+                                    "with": "apps/ngx-caballus/src/environments/environment.qa.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "ngx-caballus:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "ngx-caballus:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "ngx-caballus:build"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "apps/ngx-caballus/tsconfig.app.json",
+                            "apps/ngx-caballus/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**",
+                            "**/*.spec.ts"
+                        ]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "apps/ngx-caballus/jest.config.js",
+                        "tsConfig": "apps/ngx-caballus/tsconfig.spec.json",
+                        "setupFile": "apps/ngx-caballus/src/test-setup.ts"
+                    }
+                }
+            }
+        },
+        "ngx-caballus-e2e": {
+            "root": "apps/ngx-caballus-e2e",
+            "sourceRoot": "apps/ngx-caballus-e2e/src",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@nrwl/cypress:cypress",
+                    "options": {
+                        "cypressConfig": "apps/ngx-caballus-e2e/cypress.json",
+                        "tsConfig": "apps/ngx-caballus-e2e/tsconfig.e2e.json",
+                        "devServerTarget": "ngx-caballus:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "ngx-caballus:serve:production"
+                        }
+                    }
+                }
+            }
+        },
+        "nst-caballus": {
+            "root": "apps/nst-caballus",
+            "sourceRoot": "apps/nst-caballus/src",
+            "projectType": "application",
+            "prefix": "nst-caballus",
+            "schematics": {},
+            "architect": {
+                "build": {
+                    "builder": "@nrwl/node:build",
+                    "options": {
+                        "outputPath": "dist/apps/nst-caballus",
+                        "main": "apps/nst-caballus/src/main.ts",
+                        "tsConfig": "apps/nst-caballus/tsconfig.app.json",
+                        "assets": [
+                            "apps/nst-caballus/src/assets"
+                        ]
+                    },
+                    "configurations": {
+                        "production": {
+                            "optimization": true,
+                            "extractLicenses": true,
+                            "inspect": false,
+                            "fileReplacements": [
+                                {
+                                    "replace": "apps/nst-caballus/src/environments/environment.ts",
+                                    "with": "apps/nst-caballus/src/environments/environment.prod.ts"
+                                }
+                            ]
+                        },
+                        "uat": {
+                            "optimization": true,
+                            "extractLicenses": true,
+                            "inspect": false,
+                            "fileReplacements": [
+                                {
+                                    "replace": "apps/nst-caballus/src/environments/environment.ts",
+                                    "with": "apps/nst-caballus/src/environments/environment.uat.ts"
+                                }
+                            ]
+                        },
+                        "qa": {
+                            "optimization": true,
+                            "extractLicenses": true,
+                            "inspect": false,
+                            "fileReplacements": [
+                                {
+                                    "replace": "apps/nst-caballus/src/environments/environment.ts",
+                                    "with": "apps/nst-caballus/src/environments/environment.qa.ts"
+                                }
+                            ]
+                        },
+                        "dev": {
+                            "optimization": false,
+                            "extractLicenses": true,
+                            "inspect": false
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@nrwl/node:execute",
+                    "options": {
+                        "buildTarget": "nst-caballus:build:dev"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "apps/nst-caballus/tsconfig.app.json",
+                            "apps/nst-caballus/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**",
+                            "**/*.spec.ts"
+                        ]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "apps/nst-caballus/jest.config.js",
+                        "tsConfig": "apps/nst-caballus/tsconfig.spec.json"
+                    }
+                }
+            }
+        },
+        "common": {
+            "root": "libs/common",
+            "sourceRoot": "libs/common/src",
+            "projectType": "library",
+            "schematics": {},
+            "architect": {
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "libs/common/tsconfig.lib.json",
+                            "libs/common/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**",
+                            "**/*.spec.ts"
+                        ]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "libs/common/jest.config.js",
+                        "tsConfig": "libs/common/tsconfig.spec.json"
+                    }
+                }
+            }
+        },
+        "api-common": {
+            "root": "libs/api-common",
+            "sourceRoot": "libs/api-common/src",
+            "projectType": "library",
+            "schematics": {},
+            "architect": {
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "libs/api-common/tsconfig.lib.json",
+                            "libs/api-common/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**",
+                            "**/*.spec.ts"
+                        ]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "libs/api-common/jest.config.js",
+                        "tsConfig": "libs/api-common/tsconfig.spec.json"
+                    }
+                }
+            }
+        },
+        "ui-common": {
+            "projectType": "library",
+            "root": "libs/ui-common",
+            "sourceRoot": "libs/ui-common/src",
+            "prefix": "caballus",
+            "architect": {
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "libs/ui-common/tsconfig.lib.json",
+                            "libs/ui-common/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**",
+                            "**/*.spec.ts"
+                        ]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "libs/ui-common/jest.config.js",
+                        "tsConfig": "libs/ui-common/tsconfig.spec.json",
+                        "setupFile": "libs/ui-common/src/test-setup.ts"
+                    }
+                }
+            },
+            "schematics": {
+                "@nrwl/angular:component": {
+                    "styleext": "scss"
+                }
+            }
+        },
+        "ui-library": {
+            "projectType": "library",
+            "root": "libs/ui-library",
+            "sourceRoot": "libs/ui-library/src",
+            "prefix": "caballus",
+            "architect": {
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "libs/ui-library/tsconfig.lib.json",
+                            "libs/ui-library/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**",
+                            "**/*.spec.ts"
+                        ]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "libs/ui-library/jest.config.js",
+                        "tsConfig": "libs/ui-library/tsconfig.spec.json",
+                        "setupFile": "libs/ui-library/src/test-setup.ts"
+                    }
+                }
+            },
+            "schematics": {
+                "@nrwl/angular:component": {
+                    "styleext": "scss"
+                }
+            }
+        },
+        "ui-state": {
+            "projectType": "library",
+            "root": "libs/ui-state",
+            "sourceRoot": "libs/ui-state/src",
+            "prefix": "caballus",
+            "architect": {
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "libs/ui-state/tsconfig.lib.json",
+                            "libs/ui-state/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**"
+                        ]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "libs/ui-state/jest.config.js",
+                        "tsConfig": "libs/ui-state/tsconfig.spec.json",
+                        "setupFile": "libs/ui-state/src/test-setup.ts"
+                    }
+                }
+            },
+            "schematics": {
+                "@nrwl/angular:component": {
+                    "styleext": "scss"
+                }
+            }
+        },
+        "ion-caballus": {
+            "projectType": "application",
+            "schematics": {
+                "@nrwl/angular:component": {
+                    "style": "scss"
+                }
+            },
+            "root": "apps/ion-caballus",
+            "sourceRoot": "apps/ion-caballus/src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-angular:browser",
+                    "options": {
+                        "outputPath": "dist/apps/ion-caballus",
+                        "index": "apps/ion-caballus/src/index.html",
+                        "main": "apps/ion-caballus/src/main.ts",
+                        "polyfills": "apps/ion-caballus/src/polyfills.ts",
+                        "tsConfig": "apps/ion-caballus/tsconfig.app.json",
+                        "aot": false,
+                        "assets": [
+                            "apps/ion-caballus/src/favicon.ico",
+                            "apps/ion-caballus/src/assets",
+                            {
+                                "glob": "**/*.svg",
+                                "input": "node_modules/ionicons/dist/ionicons/svg",
+                                "output": "./svg"
+                            }
+                        ],
+                        "styles": [
+                            "apps/ion-caballus/src/styles.scss",
+                            {
+                                "input": "node_modules/@ionic/angular/css/normalize.css"
+                            },
+                            {
+                                "input": "node_modules/@ionic/angular/css/structure.css"
+                            },
+                            {
+                                "input": "node_modules/@ionic/angular/css/typography.css"
+                            },
+                            {
+                                "input": "node_modules/@ionic/angular/css/core.css"
+                            },
+                            {
+                                "input": "node_modules/@ionic/angular/css/padding.css"
+                            },
+                            {
+                                "input": "node_modules/@ionic/angular/css/float-elements.css"
+                            },
+                            {
+                                "input": "node_modules/@ionic/angular/css/text-alignment.css"
+                            },
+                            {
+                                "input": "node_modules/@ionic/angular/css/text-transformation.css"
+                            },
+                            {
+                                "input": "node_modules/@ionic/angular/css/flex-utils.css"
+                            },
+                            {
+                                "input": "apps/ion-caballus/src/theme/variables.css"
+                            }
+                        ],
+                        "scripts": []
+                    },
+                    "configurations": {
+                        "production": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "apps/ion-caballus/src/environments/environment.ts",
+                                    "with": "apps/ion-caballus/src/environments/environment.prod.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        },
+                        "uat": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "apps/ion-caballus/src/environments/environment.ts",
+                                    "with": "apps/ion-caballus/src/environments/environment.uat.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        },
+                        "qa": {
+                            "fileReplacements": [
+                                {
+                                    "replace": "apps/ion-caballus/src/environments/environment.ts",
+                                    "with": "apps/ion-caballus/src/environments/environment.qa.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true,
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "2mb",
+                                    "maximumError": "5mb"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb",
+                                    "maximumError": "10kb"
+                                }
+                            ]
+                        }
+                    }
+                },
+                "serve": {
+                    "builder": "@angular-devkit/build-angular:dev-server",
+                    "options": {
+                        "browserTarget": "ion-caballus:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "ion-caballus:build:production"
+                        }
+                    }
+                },
+                "extract-i18n": {
+                    "builder": "@angular-devkit/build-angular:extract-i18n",
+                    "options": {
+                        "browserTarget": "ion-caballus:build"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "apps/ion-caballus/tsconfig.app.json",
+                            "apps/ion-caballus/tsconfig.spec.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**",
+                            "!apps/ion-caballus/**"
+                        ]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "apps/ion-caballus/jest.config.js",
+                        "tsConfig": "apps/ion-caballus/tsconfig.spec.json",
+                        "setupFile": "apps/ion-caballus/src/test-setup.ts"
+                    }
+                },
+                "ionic-cordova-serve": {
+                    "builder": "@ionic/angular-toolkit:cordova-serve",
+                    "options": {
+                        "cordovaBuildTarget": "ion-caballus:ionic-cordova-build",
+                        "devServerTarget": "ion-caballus:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "cordovaBuildTarget": "ion-caballus:ionic-cordova-build:production",
+                            "devServerTarget": "ion-caballus:serve:production"
+                        }
+                    }
+                },
+                "ionic-cordova-build": {
+                    "builder": "@ionic/angular-toolkit:cordova-build",
+                    "options": {
+                        "browserTarget": "ion-caballus:build"
+                    },
+                    "configurations": {
+                        "production": {
+                            "browserTarget": "ion-caballus:build:production"
+                        }
+                    }
+                }
+            }
+        },
+        "ion-caballus-e2e": {
+            "root": "apps/ion-caballus-e2e",
+            "sourceRoot": "apps/ion-caballus-e2e/src",
+            "projectType": "application",
+            "architect": {
+                "e2e": {
+                    "builder": "@nrwl/cypress:cypress",
+                    "options": {
+                        "cypressConfig": "apps/ion-caballus-e2e/cypress.json",
+                        "tsConfig": "apps/ion-caballus-e2e/tsconfig.e2e.json",
+                        "devServerTarget": "ion-caballus:serve"
+                    },
+                    "configurations": {
+                        "production": {
+                            "devServerTarget": "ion-caballus:serve:production"
+                        }
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "apps/ion-caballus-e2e/tsconfig.e2e.json"
+                        ],
+                        "exclude": [
+                            "**/node_modules/**",
+                            "!apps/ion-caballus-e2e/**"
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "cli": {
+        "warnings": {
+            "typescriptMismatch": false,
+            "versionMismatch": false
+        },
+        "defaultCollection": "@nrwl/angular"
+    },
+    "schematics": {
+        "@schematics/angular": {
+            "component": {
+                "changeDetection": "OnPush"
+            }
+        },
+        "@nrwl/angular:application": {
+            "unitTestRunner": "jest",
+            "e2eTestRunner": "cypress"
+        },
+        "@nrwl/angular:library": {
+            "unitTestRunner": "jest"
+        }
+    },
+    "defaultProject": "ngx-caballus"
+}

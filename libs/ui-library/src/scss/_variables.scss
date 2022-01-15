@@ -1,0 +1,78 @@
+$caballus-pastel-orange: (
+    50: #faeae5,
+    100: #f8d0b6,
+    200: #f4b387, // Source
+    300: #ef9755,
+    400: #eb8329,
+    500: #e87100,
+    600: #de6b00,
+    700: #d16300,
+    800: #c45c00,
+    900: #ad4e00,
+    contrast: (50: $dark-primary-text,
+        100: $dark-primary-text,
+        200: $dark-primary-text,
+        300: $dark-primary-text,
+        400: $light-primary-text,
+        500: $light-primary-text,
+        600: $light-primary-text,
+        700: $light-primary-text,
+        800: $light-primary-text,
+        900: $light-primary-text,
+        A100: $dark-primary-text,
+        A200: $dark-primary-text,
+        A400: $dark-primary-text,
+        A700: $dark-primary-text));
+
+$caballus-tangerine-orange: (
+    50: #fffde8,
+    100: #fff8c6,
+    200: #fff3a1,
+    300: #ffee7c,
+    400: #ffe960,
+    500: #ffe345,
+    600: #ffd747,
+    700: #ffbf41,
+    800: #fea83b,
+    900: #f78031, // Source
+    contrast: (50: $dark-primary-text,
+        100: $dark-primary-text,
+        200: $dark-primary-text,
+        300: $light-primary-text,
+        400: $light-primary-text,
+        500: $light-primary-text,
+        600: $light-primary-text,
+        700: $light-primary-text,
+        800: $light-primary-text,
+        900: $light-primary-text,
+        A100: $dark-primary-text,
+        A200: $light-primary-text,
+        A400: $light-primary-text,
+        A700: $light-primary-text));
+
+:root {
+    // Root CSS Variables should be defined here
+    -caballus-color-pastel-orange: #f4b387;
+    -caballus-color-tangerine-orange: #f78131;
+    -caballus-color-red: #f44336;
+    -caballus-color-dark: #333333;
+    -caballus-color-dark-rgb: 51, 51, 51;
+
+    -caballus-color-primary: #f4b387;
+    -caballus-color-primary-rgb: 244, 179, 135;
+    -caballus-color-accent: #f78131;
+    -caballus-color-accent-rgb: 247, 129, 49;
+    -caballus-color-warn: #f44336;
+    -caballus-color-text: #757575;
+    -caballus-color-text-rgb: 117, 117, 117;
+
+    // Secured Container
+    --secured-container-max-mobile: 767px;
+    --secured-header-height: 92px;
+    --secured-header-profile-bar-height: 52px;
+    --secured-sidenav-width: 212px;
+    --secured-sidenav-mini-width: 50px;
+    --secured-sidenav-transition-time: 0.22s;
+
+    --transition-animation: cubic-bezier(0.785, 0.135, 0.15, 0.86) 0s;
+}

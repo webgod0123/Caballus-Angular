@@ -1,0 +1,41 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "rootDir": ".",
+        "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "es2015",
+        "module": "esnext",
+        "typeRoots": ["node_modules/@types"],
+        "lib": ["es2017", "dom"],
+        "skipLibCheck": true,
+        "skipDefaultLibCheck": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "paths": {
+            "@caballus/common": ["libs/common/src/index.ts"],
+            "@caballus/api-common": ["libs/api-common/src/index.ts"],
+            "@caballus/ui-common": ["libs/ui-common/src/index.ts"],
+            "@caballus/ui-library": ["libs/ui-library/src/index.ts"],
+            "@caballus/ui-state": ["libs/ui-state/src/index.ts"],
+            "@nst-caballus/env": ["apps/nst-caballus/src/environments/environment.ts"],
+            "@nst-caballus/controllers": ["apps/nst-caballus/src/app/controllers/index.ts"],
+            "@nst-caballus/dal": ["apps/nst-caballus/src/app/dal/index.ts"],
+            "@nst-caballus/library": ["apps/nst-caballus/src/app/library/index.ts"],
+            "@ngx-caballus/env": ["apps/ngx-caballus/src/environments/environment.ts"],
+            "@ngx-caballus/shared/*": ["apps/ngx-caballus/src/app/shared/*"],
+            "@ngx-caballus/routes/*": ["apps/ngx-caballus/src/app/core/routes/*"],
+            "@ngx-caballus/core/*": ["apps/ngx-caballus/src/app/core/*"],
+            "@ion-caballus/env": ["apps/ion-caballus/src/environments/environment.ts"],
+            "@ion-caballus/core/*": ["apps/ion-caballus/src/app/core/*"],
+            "@ion-caballus/route/*": ["apps/ion-caballus/src/app/core/routes/*"],
+            "@ion-caballus/state": ["apps/ion-caballus/src/app/core/state/index.ts"],
+            "@ion-caballus/state/actions": ["apps/ion-caballus/src/app/core/state/actions/index.ts"]
+        }
+    },
+    "exclude": ["node_modules", "caballus"]
+}

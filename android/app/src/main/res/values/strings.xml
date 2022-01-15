@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">ion-caballus</string>
+    <string name="title_activity_main">ion-caballus</string>
+    <string name="package_name">com.caballus.app</string>
+    <string name="custom_url_scheme">com.caballus.app</string>
+</resources>

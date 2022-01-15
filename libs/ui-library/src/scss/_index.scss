@@ -1,0 +1,75 @@
+@import '~@angular/material/theming';
+@include mat-core();
+@import 'variables';
+
+$caballus-app-primary: mat-palette($caballus-pastel-orange, 200);
+$caballus-app-accent: mat-palette($caballus-tangerine-orange, 900);
+$caballus-app-warn: mat-palette($mat-red);
+$caballus-app-theme: mat-light-theme($caballus-app-primary, $caballus-app-accent, $caballus-app-warn);
+
+.caballus-dark-theme {
+    // Future dark theme support?
+}
+
+@include angular-material-theme($caballus-app-theme);
+
+.mat-nav-list .mat-list-item:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.flex-spacer {
+    flex: 1;
+}
+
+.inline-spinner circle {
+    stroke: white;
+}
+
+// caballus Grid Specific Styles
+[rfxgriddetailviewheader] {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 -16px;
+    padding: 0 16px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+    .detail-view {
+        &__button {
+            min-width: 100px;
+        }
+    }
+}
+
+[rfxgriddetailviewcontent] {
+    padding: 12px 0;
+
+    .detail-view {
+        &__title {
+            margin: 0;
+        }
+
+        &__group {
+            padding-left: 12px;
+            padding-bottom: 4px;
+
+            label {
+                font-weight: bold;
+                padding-right: 4px;
+            }
+        }
+    }
+}
+
+[rfxgriddetailviewfooter] {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 -16px;
+    padding: 20px 16px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+
+    .detail-view {
+        &__button {
+            min-width: 100px;
+        }
+    }
+}

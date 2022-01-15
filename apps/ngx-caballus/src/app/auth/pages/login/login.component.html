@@ -1,0 +1,48 @@
+<div class="login-container">
+    <mat-card>
+        <mat-card-content>
+            <div class="left-panel">
+                <img class="logo" src="/assets/logo.svg" />
+                <h4 class="logo-title">Fueled by caballus</h4>
+                <h3 class="logout-message" *ngIf="!!(message$ | async)">{{ message$ | async }}</h3>
+                <form [formGroup]="loginForm" (ngSubmit)="tryLogin(loginForm)">
+                    <mat-form-field>
+                        <input matInput placeholder="Email" type="email" formControlName="email" />
+                        <mat-error [rfxError]="loginForm.get('email')"></mat-error>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input
+                            matInput
+                            placeholder="Password"
+                            type="password"
+                            formControlName="password"
+                        />
+                        <mat-error [rfxError]="loginForm.get('password')"></mat-error>
+                    </mat-form-field>
+                    <button mat-flat-button color="primary" type="submit">Login</button>
+                    <div class="login-help">
+                        <span clspanss="spacer"></span>
+                        <a routerLink="/auth/forgot">Forgot password</a>
+                    </div>
+                </form>
+            </div>
+            <div class="right-panel">
+                <img mat-card-image src="/assets/main.jpg" />
+                <div class="register">
+                    <h3>Ready to hop onboard?</h3>
+                    <button
+                        mat-flat-button
+                        color="primary"
+                        type="button"
+                        routerLink="/auth/register"
+                    >
+                        Register Now
+                    </button>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>
+<div class="loading" *ngIf="(loading$ | async)">
+    <mat-spinner></mat-spinner>
+</div>
